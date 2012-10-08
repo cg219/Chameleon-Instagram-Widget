@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<manifest xmlns="http://chameleonlauncher.com/widgets">
+	
+	<!-- About the widget -->
+	<widget>
+		<guid>com.imkreative.chameleon.instagram</guid> <!-- A unique id -->
+		<baseURL>http://dev.kreativeking.com/chameleon/instagram</baseURL> <!-- your base url -->
+		<name>Instagram</name> <!-- title that users will see as the name of the widget -->
+		<description>Extensive Instagram Widget</description> <!-- a detailed description of the widget -->
+		<version>0.0.1</version> <!-- the version number of your widget -->
+	</widget>	
+	
+	
+	
+	<!-- Style info -->
+	<style>
+		<!--<icons>
+			<large>images/icon.png</large> displayed on the title bar and in the widget list 
+		</icons>-->
+		<color>#EF0038</color> <!-- The color applied to the widget's chrome -->
+		<showTitleBar>true</showTitleBar> <!-- hide the title bar if false -->
+		<showBackgroundShadow>true</showBackgroundShadow> <!-- hide theshadow behind the widget if false -->
+		<allowRefresh>true</allowRefresh> <!-- display a refresh button on the title bar -->
+		<allowConfigure>true</allowConfigure> <!-- display a refresh button on the title bar -->
+		<allowAction>true</allowAction> <!-- display an action button on the title bar. You can specify the icon. -->
+	</style>
+	
+	
+	
+	<!-- About who created the widget, and how to contact them -->
+	<author>
+		<name>Clemente Gomez</name>
+		<website>http://www.imkreative.com</website>
+		<email>mente@imkreative.com</email>
+		<support type="email">dev@imkreative.com</support>
+		<support type="URL">http://imkreative.com</support>
+	</author>
+</manifest>
