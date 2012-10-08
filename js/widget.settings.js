@@ -44,29 +44,7 @@
 		var sharedData = chameleon.getSharedData();
 		var instagram = new Instagram("", "", "php/instalib.php", token);
 		
-		chameleon.invalidate();
-		$(".console").append("\n<pre>" + instagram.accessToken + "</pre>\n").chameleonInvalidate();
 		
-		instagram.getUserFeed( function(response){
-			var string = "\n<pre>"
-			$.each(response.data[0], function(key, ele){
-				string += ( key + ": " + ele + "\n" );
-			});
-			
-			string += "</pre>\n"
-			chameleon.invalidate();
-			$(".console").append(string).chameleonInvalidate();
-		}, 1, "", "", function(response){
-			var string = "\n<pre>"
-			$.each(response, function(key, ele){
-				string += ( key + ": " + ele + "\n" );
-			});
-			
-			string += "</pre>\n"
-			chameleon.invalidate();
-			$(".console").append(string).chameleonInvalidate();
-
-		});
 	}
 	
 })()
