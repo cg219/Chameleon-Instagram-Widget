@@ -1,16 +1,16 @@
-#chameleon-widget-settings{
-	background: rgba(60,60,60,0.95);
-}
-
 .console{
 	overflow: scroll;
 	background: #EF0038;
 }
 
-#authorize {
-	margin-bottom: 0;
-	position: absolute;
-	bottom: 35px;
-	left: 0;
-	right: 0;
+#accounts{
+	width: 90%;
+	position: relative;
+	margin: 10px auto 0 !important;
+}
+
+#add-account {
+	position: relative;
+	width: 75%;
+	margin: 5px auto 0 !important;
 }

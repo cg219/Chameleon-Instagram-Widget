@@ -35,16 +35,63 @@
 		});
 	});
 	
+	
 	$("#close-button").on("click", function(event){
 		event.preventDefault();
 		chameleon.close(true);
 	});
+	
 
 	function storeToken(token){
 		var sharedData = chameleon.getSharedData();
 		var instagram = new Instagram("", "", "php/instalib.php", token);
 		
+		instagram.getUser( function(response){
+			chameleon.invalidate();
+			
+			if( sharedData,accounts ){
+				sharedData.accounts = [];
+			}
+			
+			sharedData.accounts.push({
+				user : response.data.username,
+				userID : response.data.id,
+				token : token
+			});
+			
+			chameleon.saveSharedData(sharedData);
+			createAccountsList( getAccounts() );
+		}, "self");
 		
 	}
+	
+	
+	function getAccounts(){
+		return chameleon.getSharedData().accounts;
+	}
+	
+	
+	function createAccountsList( accounts ){
+		if( accounts ){
+			var accountsList = [];
+			
+			$.each(accounts, function(key, obj){
+				accountsList.push({
+					name: obj.user,
+					value: obj.token
+				});
+				
+			});
+			
+			$("#accounts").chameleonSelectList({
+				title: "Choose Instagram Account",
+				list: accountsList,
+				selectedValue: accountsList[0].name
+			});
+		}
+		
+	}
+	
+	createAccountsList( getAccounts() );
 	
 })()
