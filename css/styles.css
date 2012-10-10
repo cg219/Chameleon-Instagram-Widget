@@ -14,3 +14,12 @@
 	width: 75%;
 	margin: 5px auto 0 !important;
 }
+
+.label{
+	margin: 0 0 5px 20px;
+	font-size: 12px !important;
+}
+
+.heading{
+	font-size: 16px !important;
+}
