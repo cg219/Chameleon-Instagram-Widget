@@ -1,5 +1,5 @@
 (function(){
-	$("#authorize").on("click", function(event){
+	$("#add-account").on("click", function(event){
 		event.preventDefault();
 		chameleon.promptOauth({
 			version: "2.0",
@@ -49,12 +49,12 @@
 		instagram.getUser( function(response){
 			chameleon.invalidate();
 			
-			if( sharedData,accounts ){
+			if( sharedData.accounts ){
 				sharedData.accounts = [];
 			}
 			
 			sharedData.accounts.push({
-				user : response.data.username,
+				user : response.data.username.toUpperCase(),
 				userID : response.data.id,
 				token : token
 			});
@@ -77,7 +77,7 @@
 			
 			$.each(accounts, function(key, obj){
 				accountsList.push({
-					name: obj.user,
+					name: obj.user.toUpperCase(),
 					value: obj.token
 				});
 				
@@ -86,12 +86,28 @@
 			$("#accounts").chameleonSelectList({
 				title: "Choose Instagram Account",
 				list: accountsList,
-				selectedValue: accountsList[0].name
+				selectedValue: accountsList[0].name.toUpperCase()
 			});
 		}
 		
 	}
 	
+	function createFeeds(){
+		$("#feeds").chameleonSelectList({
+				title: "Choose Instagram Feed",
+				list: [
+					{
+						name: "User Feed", value:"userfeed"
+					},
+					{
+						name: "Popular Feed", value:"popular"
+					}
+				],
+				selectedValue: "userfeed".toUpperCase()
+			});
+	}
+	
 	createAccountsList( getAccounts() );
+	createFeeds();
 	
 })()

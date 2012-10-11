@@ -3,7 +3,7 @@
 	background: #EF0038;
 }
 
-#accounts{
+#accounts, #feeds{
 	width: 90%;
 	position: relative;
 	margin: 10px auto 0 !important;
@@ -22,4 +22,8 @@
 
 .heading{
 	font-size: 16px !important;
+}
+
+section{
+	margin-bottom: 20px;
 }
