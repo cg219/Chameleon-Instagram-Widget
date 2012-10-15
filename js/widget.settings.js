@@ -38,26 +38,42 @@
 	
 	$("#close-button").on("click", function(event){
 		event.preventDefault();
-		chameleon.close(true);
+		
+		var sharedData = chameleon.getSharedData();
+		
+		sharedData.defaults = {
+			user: $("#accounts").chameleonSelectList({getSelectedItem:true}),
+			feed: $("#feeds").chameleonSelectList({getSelectedItem:true})
+		}
+		
+		chameleon.saveSharedData(sharedData);
+		
+		chameleon.close(true, {
+			user: sharedData.defaults.user,
+			feed: sharedData.defaults.feed
+		});
 	});
 	
 
 	function storeToken(token){
 		var sharedData = chameleon.getSharedData();
+		var accounts = [];
 		var instagram = new Instagram("", "", "php/instalib.php", token);
 		
 		instagram.getUser( function(response){
 			chameleon.invalidate();
 			
 			if( sharedData.accounts ){
-				sharedData.accounts = [];
+				accounts = sharedData.accounts;
 			}
 			
-			sharedData.accounts.push({
+			accounts.push({
 				user : response.data.username.toUpperCase(),
 				userID : response.data.id,
 				token : token
 			});
+			
+			sharedData.accounts = accounts;
 			
 			chameleon.saveSharedData(sharedData);
 			createAccountsList( getAccounts() );
@@ -86,8 +102,25 @@
 			$("#accounts").chameleonSelectList({
 				title: "Choose Instagram Account",
 				list: accountsList,
-				selectedValue: accountsList[0].name.toUpperCase()
+				selectedValue: accountsList[0].value
 			});
+			
+			var dataString = "\nNo Accounts\n<pre>"
+			$.each(chameleon.getSharedData(), function(key, ele){
+				dataString += ( key + ": " + ele + "\n" );
+			});
+			
+			dataString += "</pre>\n"
+			$(".console").append(dataString).chameleonInvalidate();
+		}
+		else{
+			var dataString = "\nNo Accounts\n<pre>"
+			$.each(chameleon.getSharedData(), function(key, ele){
+				dataString += ( key + ": " + ele + "\n" );
+			});
+			
+			dataString += "</pre>\n"
+			$(".console").append(dataString).chameleonInvalidate();
 		}
 		
 	}

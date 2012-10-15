@@ -10,32 +10,35 @@
 	<link rel="stylesheet" href="css/styles.css" />
 	<link rel="stylesheet" href="css/layout.css" />
 	
-	<title>Chameleon Instagram Widget</title>
+	<title>New Comment</title>
 </head>
 
 <body>
-	<div id="chameleon-widget">
+	<div id="comment-widget">
 		<p class="console"></p>
-		<section class="feed">
+		<header>Comments</header>
+		<section id="comments">
 			<ul>
 			
 			</ul>
 		</section>
+		<form id="comment-form">
+			<button id="send">Send</button>
+			<button id="cancel">Back</button>
+			<input id="comment-input" type="text" name="comment-text" />
+		</form>
 	</div>
 	
 	<script src="js/jquery-1.8.1.js"></script>
 	<script src="js/chameleon.js"></script>
 	<script src="js/chameleon.jquery.js"></script>
 	<script src="js/instalib.js"></script>
-	<script id="feedTemplate" type="instagram/template">
-		<li>
-			<h2 class="username" data-userID="{{userID}}">{{username}}</h2>
-			<img class="image" src="{{image}}" alt="{{imgalt}}" data-id="{{id}}" />
+	<script id="commentTemplate" type="instagram/template">
+		<li data-userID="{{userID}}" data-id="{{id}}">
 			<img class="userImage" src="{{userImage}}" />
-			<span class="like{{like}}" data-id="{{id}}" data-liked="{{userLiked}}"></span>
-			<span class="comment" data-id="{{id}}"></span>
+			<p class="comment"><span class="username">{{username}}:</span>{{comment}}</p>
 		</li>
 	</script>
-	<script src="js/widget.js"></script>
+	<script src="js/widget.comment.js"></script>
 </body>
 </html>

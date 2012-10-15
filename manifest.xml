@@ -14,9 +14,9 @@
 	
 	<!-- Style info -->
 	<style>
-		<!--<icons>
-			<large>images/icon.png</large> displayed on the title bar and in the widget list 
-		</icons>-->
+		<icons>
+			<large>images/icon.png</large>
+		</icons>
 		<color>#EF0038</color> <!-- The color applied to the widget's chrome -->
 		<showTitleBar>true</showTitleBar> <!-- hide the title bar if false -->
 		<showBackgroundShadow>true</showBackgroundShadow> <!-- hide theshadow behind the widget if false -->

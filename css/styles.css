@@ -1,6 +1,7 @@
 .console{
 	overflow: scroll;
 	background: #EF0038;
+	z-index: 1000;
 }
 
 #accounts, #feeds{
