@@ -45,8 +45,8 @@
 				});
 				
 				dataString += "</pre>\n"
-				chameleon.invalidate();
-				$(".console").empty().append(dataString).chameleonInvalidate();
+				//chameleon.invalidate();
+				//$(".console").empty().append(dataString).chameleonInvalidate();
 				
 				chameleon.invalidate();
 				$("ul").empty().append( populateFeed(response.data) ).chameleonInvalidate();
@@ -82,7 +82,7 @@
 					.replace( /{{userID}}/ig, object.user.id)
 					.replace( /{{userImage}}/ig, object.user.profile_picture)
 					.replace( /{{like}}/ig, liked.button )
-					//.replace( /{{border}}/ig, liked.border )
+					.replace( /{{border}}/ig, liked.border )
 					.replace( /{{userLiked}}/ig, object.user_has_liked );
 			});
 		}
@@ -103,7 +103,7 @@
 				.replace( /{{userID}}/ig, data.user.id)
 				.replace( /{{userImage}}/ig, data.user.profile_picture)
 				.replace( /{{like}}/ig, liked,button )
-				//.replace( /{{border}}/ig, liked.border )
+				.replace( /{{border}}/ig, liked.border )
 				.replace( /{{userLiked}}/ig, data.user_has_liked );
 		}
 		
@@ -114,14 +114,14 @@
 		if( isLiked === true ){
 			instagram.deleteLike(function(response){
 				element.removeClass("liked");
-				//element.siblings(".image").removeClass("likeBorder");
+				element.siblings(".image").removeClass("likeBorder");
 				element.data("liked", false);
 			}, id);
 		}
 		else{
 			instagram.setLike(function(response){
 				element.addClass("liked");
-				//element.siblings(".image").addClass("likeBorder");
+				element.siblings(".image").addClass("likeBorder");
 				element.data("liked", true);
 			}, id);
 		}
@@ -149,15 +149,22 @@
 		});
 	});
 	
-	$(".feed ul").on("dblclick", "img.image", function(event){
+	var lastTap = 0;
+	
+	$(".feed ul").on("mousedown", "img.image", function(event){
 		event.preventDefault();
 		event.stopPropagation();
-		//var likeButton = $(this).siblings(".like");
+		var likeButton = $(this).siblings(".like");
+		var tap = (new Date()).valueOf();
+		var delta = (tap - lastTap);
 		
-				chameleon.invalidate();
-				$(".console").append("DoubleTap").chameleonInvalidate();
+		lastTap = tap;
 		
-		//likePhoto(likeButton.data("liked"), likeButton.data("id"), likeButton);
+		if( delta < 800 ){
+			chameleon.invalidate();
+			$(".console").append("DoubleTap\n").chameleonInvalidate();
+			likePhoto(likeButton.data("liked"), likeButton.data("id"), likeButton);
+		}
 	});
 	
 })()
