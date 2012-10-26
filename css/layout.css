@@ -13,6 +13,7 @@
 	overflow: hidden;
 	margin-bottom: 20px;
 	position: relative;
+	float: none;
 }
 
 .like{
@@ -21,34 +22,72 @@
 }
 
 .likeBorder{
-	border: 1px #EF0038 solid !important;
-}
-/* 7in Landscape 1 Column*/
-@media screen and (max-width: 256px){
-	#chameleon-widget .image{
-		width: 100px;
-		height: 100px;
-	}
+	border: 3px #EF0038 solid !important;
 }
 
-/* 7in Vertical 1 Column*/
-@media screen and (max-width: 301px){
+/* 7in Landscape 1 Column 1 Row*/
+@media screen and (max-width: 301px) and (max-height: 217px){
+	
+	.feed ul li{
+		overflow: hidden;
+		margin-bottom: 0px;
+		float: left;
+		position: relative;
+	}
+	
+	.likeBorder{
+		border: 1px #EF0038 solid !important;
+	}
 
 	#chameleon-widget .username{
 		display: none;
 	}
 	
 	#chameleon-widget .image{
-		width: 200px;
-		height: 200px;
+		width: 50px;
+		height: 50px;
+		border: 1px #EFEFEF solid;
+	}
+	
+	#chameleon-widget .userImage{
+		display: none;
+	}
+	
+	#chameleon-widget .comment{
+		display: none
+	}
+	
+	#chameleon-widget .like{
+		display: none
+	}
+
+}
+
+/* 7in Vertical 1 Column 2+ Rows*/
+@media screen and (max-width: 301px) and (min-height: 216px){
+
+	.likeBorder{
+		border: 3px #EF0038 solid !important; 
+	}
+	
+	#chameleon-widget .username{
+		position: absolute;
+		bottom: 43px;
+		left: 70px;
+	}
+	
+	#chameleon-widget .image{
+		width: 254px;
+		height: 254px;
 		float: left;
 		border: 3px #EFEFEF solid;
 	}
 	
 	#chameleon-widget .userImage{
-		width: 40px;
-		height: 40px;
-		float: right;
+		width: 60px;
+		height: 60px;
+		float: left;
+		margin-top: 5px;
 		border: 1px #EFEFEF solid;
 	}
 	
@@ -57,9 +96,8 @@
 		background-size: 40px 40px;
 		width: 40px;
 		height: 40px;
-		position: absolute;
-		bottom: 0;
-		right: 0;
+		float: left;
+		margin-top: 32px;
 	}
 	
 	#chameleon-widget .like{
@@ -67,9 +105,9 @@
 		background-size: 40px 40px;
 		width: 40px;
 		height: 40px;
-		position: absolute;
-		bottom: 40px;
-		right: 0;
+		float: left;
+		margin-top: 32px;
+		margin-left: 5px;
 	}
 	
 	#chameleon-widget .like.liked{
